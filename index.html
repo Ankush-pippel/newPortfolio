@@ -3,362 +3,220 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Full Stack Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <style>
-    * {
-      margin: 0; padding: 0; box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-    body { background: #f9fafb; color: #333; line-height: 1.6; }
-
-    /* Navbar */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      background: #fff;
-      padding: 15px 40px;
-      display: flex; justify-content: space-between; align-items: center;
-      z-index: 1000; border-bottom: 1px solid #eee;
-    }
-    nav .logo { font-size: 24px; font-weight: 700; color: #2563eb; }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-    }
-    nav ul li a {
-      text-decoration: none; color: #555;
-      font-weight: 500; position: relative;
-      transition: color 0.3s;
-    }
-    nav ul li a:hover { color: #2563eb; }
-
-    /* Mobile Menu */
-    .menu-toggle {
-      display: none; font-size: 26px; color: #333; cursor: pointer;
-    }
-   .mobile-nav {
-  display: none;
-  flex-direction: column;
-  background: #fff;
-  position: absolute;
-  top: 100%; 
-  right: 20px;   /* right side pe chipka hua */
-  width: 200px;  /* menu ka width fix */
-  border: 1px solid #eee;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  z-index: 999;  /* navbar ke upar dikhne ke liye */
-}
-
-.mobile-nav a {
-  padding: 12px 15px;
-  border-bottom: 1px solid #f1f1f1;
-  text-decoration: none;
-  color: #555;
-  transition: background 0.3s;
-}
-
-.mobile-nav a:last-child {
-  border-bottom: none;
-}
-
-.mobile-nav a:hover {
-  background: #f3f4f6; 
-  color: #2563eb;
-}
-
-
-    /* Hero */
-    #home {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 120px 40px 60px; min-height: 100vh;
-      background: linear-gradient(135deg, #2563eb, #1e40af); color: #fff;
-      flex-wrap: wrap;
-    }
-    #home h1 { font-size: 52px; margin-bottom: 15px; }
-    #home h1 span { color: #facc15; }
-    #home h2 { font-size: 28px; margin-bottom: 20px; font-weight: 600; }
-    #home p { font-size: 18px; margin-bottom: 30px; max-width: 500px; }
-    #home .buttons a {
-      display: inline-block; padding: 12px 30px; border-radius: 30px;
-      font-weight: 600; margin-right: 15px;
-      text-decoration: none; transition: all 0.3s ease;
-    }
-    .btn-primary { background: #fff; color: #2563eb; }
-    .btn-primary:hover { background: #f1f5f9; }
-    .btn-outline { border: 2px solid #fff; color: #fff; }
-    .btn-outline:hover { background: #fff; color: #2563eb; }
-    #home img {
-      width: 300px; height: 300px; border-radius: 50%;
-      border: 6px solid rgba(255,255,255,0.3); object-fit: cover;
-      margin-top: 20px;
-    }
-
-    /* Sections */
-    section { padding: 80px 40px; }
-    section h2 { text-align: center; font-size: 36px; margin-bottom: 15px; }
-    section p.section-subtitle {
-      text-align: center; font-size: 18px; color: #666; margin-bottom: 50px;
-    }
-
-    /* Projects */
-    .projects-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 20px;
-    }
-    .project-card {
-      background: #fff; border: 1px solid #eee; padding: 20px;
-      border-radius: 10px; transition: 0.3s;
-    }
-    .project-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
-    .project-card h3 { margin-bottom: 15px; }
-    .project-card iframe {
-      width: 100%; height: 200px; border: none;
-      border-radius: 8px; margin-bottom: 15px;
-    }
-    .project-card button {
-      background: none; border: none; color: #2563eb;
-      font-weight: 600; cursor: pointer;
-    }
-    .live-btn {
-  display: inline-block;
-  background: #2563eb;
-  color: #fff;
-  padding: 10px 18px;
-  border-radius: 6px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-.live-btn:hover {
-  background: #1e40af;
-}
-
-
-    /* About */
-    .about-content { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; }
-    .about-content img {
-      max-width: 400px; border-radius: 10px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    }
-    .about-text { flex: 1; }
-    .about-text p { margin-bottom: 20px; color: #555; }
-
-    /* Skills */
-    .skills-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px; text-align: center;
-    }
-    .skill-badge {
-      background: #e0f2fe; color: #2563eb; padding: 25px;
-      border-radius: 10px; transition: 0.3s;
-    }
-    .skill-badge:hover { background: #2563eb; color: #fff; transform: scale(1.05); }
-    .skill-badge i { font-size: 32px; margin-bottom: 10px; }
-
-    /* Contact */
-    .contact-box {
-      max-width: 400px; margin: auto;
-      background: #f8fafc; padding: 30px;
-      border-radius: 10px; text-align: center;
-    }
-    .contact-btn {
-      display: block; margin: 15px 0; padding: 15px;
-      border-radius: 8px; font-weight: 600; text-decoration: none;
-      transition: 0.3s;
-    }
-    .whatsapp { background: #25D366; color: #fff; }
-    .whatsapp:hover { background: #1ebe5d; }
-    .phone { background: #2563eb; color: #fff; }
-    .phone:hover { background: #1e40af; }
-    .social-links { margin-top: 20px; display: flex; justify-content: center; gap: 15px; }
-    .social-links a {
-      width: 40px; height: 40px; background: #e5e7eb; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: #333; transition: 0.3s;
-    }
-    .social-links a:hover { background: #2563eb; color: #fff; }
-
-    /* Footer */
-    footer { background: #1f2937; color: #ccc; text-align: center; padding: 40px 20px; }
-    footer .logo { font-size: 22px; font-weight: 700; color: #60a5fa; }
-    footer .social { margin: 20px 0; }
-    footer .social a {
-      color: #aaa; margin: 0 10px; font-size: 20px; transition: 0.3s;
-    }
-    footer .social a:hover { color: #fff; }
-
-    /* Responsive */
-    @media(max-width: 768px) {
-      nav ul { display: none; }
-      .menu-toggle { display: block; }
-      #home { flex-direction: column; text-align: center; }
-      #home img { margin-top: 30px; }
-    }
-  </style>
+  <title>WEBAURA | Ankush — Freelance Web Developer</title>
+  <meta name="description" content="Ankush is a freelance web developer building fast, modern, responsive business websites that convert visitors into customers.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav>
-    <div class="logo"><i>webaura2025</i></div>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-    <div class="mobile-nav" id="mobileNav">
-      <a href="#home">Home</a>
+  <header class="navbar">
+    <a href="index.html" class="logo-wrap">
+      <img src="img/webaura.jpg" alt="WebAura Logo" class="logo-img">
+      <span class="logo-text"><b><i>WEBAURA</i></b></span>
+    </a>
+
+    <button class="hamburger-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <nav id="nav-menu">
+      <a href="#home" class="nav-link active-link">Home</a>
+      <a href="#services">Services</a>
       <a href="#projects">Projects</a>
       <a href="#about">About</a>
-      <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <!-- Hero -->
-  <section id="home">
-    <div>
-      <h1>Hi, I'm <span>FREELANCER</span></h1>
-      <h2>Full Stack Developer</h2>
-      <p>Creating innovative web solutions with modern technologies. Specializing in frontend development, backend architecture, and Django-powered applications.</p>
-      <div class="buttons">
-        <a href="#projects" class="btn-primary">View My Work</a>
-        <a href="#contact" class="btn-outline">Get In Touch</a>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h4 class="reveal">Hello, I'm</h4>
+      <h1 class="reveal">Ankush</h1>
+      <h2 class="reveal"><span id="typing"></span><span class="cursor">|</span></h2>
+
+      <p class="reveal">
+        I build fast, modern and responsive business websites that help companies generate more customers, build trust and grow online.
+      </p>
+
+      <div class="hero-buttons reveal">
+        <a href="#projects" class="btn primary">View Projects</a>
+        <a href="#contact" class="btn secondary">Get Free Quote</a>
+      </div>
+
+      <div class="hero-features reveal">
+        <div><i class="fa-solid fa-check"></i> Responsive Design</div>
+        <div><i class="fa-solid fa-check"></i> SEO Friendly</div>
+        <div><i class="fa-solid fa-check"></i> Fast Loading</div>
+        <div><i class="fa-solid fa-check"></i> Lifetime Support</div>
       </div>
     </div>
-    <img src="webaura.jpg" alt="Profile">
+
+    <div class="hero-image reveal">
+      <img src="img/ankush.jpg" alt="Ankush — Freelance Web Developer">
+    </div>
   </section>
 
-  <!-- Projects -->
+  <section class="stats">
+    <div class="stat"><h2 data-count="20">0</h2><p>Projects Completed</p></div>
+    <div class="stat"><h2 data-count="100">0</h2><p>Responsive Websites</p></div>
+    <div class="stat"><h2 data-count="24" data-suffix="/7">0</h2><p>Support</p></div>
+    <div class="stat"><h2 data-count="99">0</h2><p>Client Satisfaction</p></div>
+  </section>
+
+  <section id="services">
+    <h2>My Services</h2>
+    <p>Professional Web Solutions for Businesses</p>
+
+    <div class="service-container">
+      <div class="service-box">
+        <i class="fa-solid fa-laptop-code"></i>
+        <h3>Business Website</h3>
+        <p>Professional websites that increase customer trust.</p>
+      </div>
+      <div class="service-box">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <h3>E-Commerce</h3>
+        <p>Online stores with payment integration.</p>
+      </div>
+      <div class="service-box">
+        <i class="fa-solid fa-mobile-screen-button"></i>
+        <h3>Landing Pages</h3>
+        <p>High-converting landing pages.</p>
+      </div>
+      <div class="service-box">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <h3>Website Maintenance</h3>
+        <p>Regular updates and support.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <h2>Why Choose Me</h2>
+    <div class="why-grid">
+      <div><i class="fa-solid fa-bolt"></i><h3>Fast Delivery</h3></div>
+      <div><i class="fa-solid fa-mobile"></i><h3>Fully Responsive</h3></div>
+      <div><i class="fa-solid fa-ranking-star"></i><h3>SEO Optimized</h3></div>
+      <div><i class="fa-solid fa-headset"></i><h3>Free Support</h3></div>
+      <div><i class="fa-solid fa-code"></i><h3>Clean Code</h3></div>
+      <div><i class="fa-solid fa-lock"></i><h3>Secure Website</h3></div>
+    </div>
+  </section>
+
   <section id="projects">
     <h2>Featured Projects</h2>
-    <p class="section-subtitle">Explore my latest web development projects showcasing full-stack capabilities</p>
-    <div class="projects-grid">
-        <div class="project-card">
-            <h3>Project 1</h3>
-            <iframe src="https://ankushg11.github.io/project-1/"></iframe>
-            <p>Project description here.</p>
-            <a href="https://ankushg11.github.io/project-1/" target="_blank" class="live-btn">View Live <i class="fas fa-external-link-alt"></i></a>
+    <p>Real Projects Built for Real Businesses</p>
+
+    <div class="project-container">
+
+      <div class="project-card">
+        <div class="project-badge">Recently Completed</div>
+        <img src="img/ps-max-services.jpg" alt="PS Max Services website preview">
+        <h3>PS Max Services — Business Website</h3>
+        <p>Designed and developed a 6-page multi-purpose business website with bilingual content, WhatsApp API integration, click-to-call functionality and service showcase — currently live on a custom domain serving real customers.</p>
+        <div class="tags">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span><span>WhatsApp API</span>
         </div>
-        <div class="project-card">
-            <h3>Project 2</h3>
-            <iframe src="https://ankushg11.github.io/zym/"></iframe>
-            <p>Project description here.</p>
-            <a href="https://ankushg11.github.io/zym/" target="_blank" class="live-btn">View Live <i class="fas fa-external-link-alt"></i></a>
+        <div class="project-buttons">
+          <a href="https://psmaxservices.in" target="_blank" rel="noopener">Live Demo</a>
+          <a href="https://github.com/Ankush-pippel/service" target="_blank" rel="noopener">GitHub</a>
         </div>
-        <div class="project-card">
-            <h3>Project 3</h3>
-            <iframe src="https://ankushg11.github.io/screp/"></iframe>
-            <p>Project description here.</p>
-            <a href="https://ankushg11.github.io/screp/" target="_blank" class="live-btn">View Live <i class="fas fa-external-link-alt"></i></a>
+      </div>
+
+      <div class="project-card">
+        <img src="img/bombay-cafe.jpg" alt="Bombay Cafe website preview">
+        <h3>Bombay Cafe</h3>
+        <p>Built a responsive restaurant ordering website with dynamic menu, cart, and quantity selection using HTML, CSS, and JavaScript. Integrated a persistent localStorage-based cart with direct WhatsApp checkout, eliminating third-party delivery commissions.</p>
+        <div class="tags">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span><span>WhatsApp API</span><span>Django</span><span>Python</span>
         </div>
-        <div class="project-card">
-            <h3>Project 1</h3>
-            <iframe src="https://ankushg11.github.io/resturent-project3/"></iframe>
-            <p>Project description here.</p>
-            <a href="https://ankushg11.github.io/resturent-project3/" target="_blank" class="live-btn">View Live <i class="fas fa-external-link-alt"></i></a>
+        <div class="project-buttons">
+          <a href="https://ankush-pippel.github.io/bombey/" target="_blank" rel="noopener">Live Demo</a>
+          <a href="https://github.com/Ankush-pippel/bombey" target="_blank" rel="noopener">GitHub</a>
         </div>
-      
+      </div>
+
     </div>
   </section>
 
-  <!-- About -->
+  <section id="process">
+    <h2>My Work Process</h2>
+    <div class="process">
+      <div><span class="step-num">1</span><h3>Requirement</h3></div>
+      <div><span class="step-num">2</span><h3>Design</h3></div>
+      <div><span class="step-num">3</span><h3>Development</h3></div>
+      <div><span class="step-num">4</span><h3>Testing</h3></div>
+      <div><span class="step-num">5</span><h3>Delivery</h3></div>
+    </div>
+  </section>
+
   <section id="about">
     <h2>About Me</h2>
-    <div class="about-content">
-      <img src="https://via.placeholder.com/400x300" alt="About">
-      <div class="about-text">
-        <p>I am a passionate Full Stack Developer with expertise in creating dynamic, responsive web applications.</p>
-        <p>With strong foundations in both frontend and backend technologies, I specialize in building scalable solutions using modern frameworks.</p>
-      </div>
-    </div>
+    <p>
+      Hi, I'm Ankush, a Freelance Web Developer helping businesses establish a strong online presence through modern, responsive and SEO-friendly websites.
+      I specialize in business websites, portfolio websites, landing pages and custom web solutions designed to increase customer trust and generate more leads.
+    </p>
   </section>
 
-  <!-- Skills -->
-  <section id="skills">
-    <h2>Technical Expertise</h2>
-    <p class="section-subtitle">Comprehensive skill set covering frontend, backend, and development tools</p>
-    <div class="skills-grid">
-      <div class="skill-badge"><i class="fab fa-html5"></i><h4>HTML5</h4></div>
-      <div class="skill-badge"><i class="fab fa-css3-alt"></i><h4>CSS3</h4></div>
-      <div class="skill-badge"><i class="fab fa-js"></i><h4>JavaScript</h4></div>
-      <div class="skill-badge"><i class="fab fa-python"></i><h4>Python</h4></div>
-      <div class="skill-badge"><i class="fab fa-bootstrap"></i><h4>Bootstrap</h4></div>
-      <div class="skill-badge"><i class="fas fa-code"></i><h4>Django</h4></div>
-    </div>
-  </section>
-
-  <!-- Contact -->
   <section id="contact">
-    <h2>Get In Touch</h2>
-    <p class="section-subtitle">Ready to start your next project? Let's connect!</p>
-    <div class="contact-box">
-      <a href="https://wa.me/917599830548" class="contact-btn whatsapp"><i class="fab fa-whatsapp"></i> Message on WhatsApp</a>
-      <a href="tel:+917599830548" class="contact-btn phone"><i class="fas fa-phone"></i> Call Now</a>
-      <div class="social-links">
-        <a href="https://github.com/ANKUSHG11"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/ankush-pippal-b425a2327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://x.com/Ankush_devid1?t=xWg-798WpDrBN7ht-Kpmzw&s=09"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.facebook.com/share/1HYqZAq2tr/"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/webaura2025?igsh=MXFyeGw4ajBmbnFoNw=="><i class="fa-brands fa-square-instagram"></i></a>
-      </div>
+    <h2>Let's Build Your Website</h2>
+    <p>Choose the easiest way to reach out — I usually reply within a few hours.</p>
+
+    <div class="contact-container">
+      <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener" class="contact-card whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <h3>WhatsApp</h3>
+        <p>Chat instantly</p>
+      </a>
+
+      <a href="tel:+91XXXXXXXXXX" class="contact-card call">
+        <i class="fa-solid fa-phone"></i>
+        <h3>Call Me</h3>
+        <p>+91 XXXXX XXXXX</p>
+      </a>
+
+      <a href="mailto:youremail@gmail.com" class="contact-card email">
+        <i class="fa-solid fa-envelope"></i>
+        <h3>Email</h3>
+        <p>youremail@gmail.com</p>
+      </a>
+
+      <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener" class="contact-card linkedin">
+        <i class="fa-brands fa-linkedin"></i>
+        <h3>LinkedIn</h3>
+        <p>500+ Connections</p>
+      </a>
+    </div>
+
+    <div class="contact-note">
+      <i class="fa-solid fa-circle-check"></i>
+      Available for freelance projects — quick response guaranteed
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <div class="logo">ANKUSH</div>
-    <p>Full Stack Developer crafting digital experiences that make an impact</p>
-    <div class="social">
-      <a href="https://github.com/ANKUSHG11"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/ankush-pippal-b425a2327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
-      <a href="https://x.com/Ankush_devid1?t=xWg-798WpDrBN7ht-Kpmzw&s=09"><i class="fab fa-twitter"></i></a>
-      <a href="https://www.facebook.com/share/1HYqZAq2tr/"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="https://www.instagram.com/webaura2025?igsh=MXFyeGw4ajBmbnFoNw=="><i class="fa-brands fa-square-instagram"></i></a>
+    <h2>ANKUSH</h2>
+    <p>Freelance Web Developer</p>
+    <p>Helping Businesses Grow Online</p>
+
+    <div class="footer-links">
+      <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
-    <p>© 2024 Ankush. All rights reserved.</p>
+
+    <p>© 2025 WEBAURA. All Rights Reserved</p>
   </footer>
 
-  <script>
-    // Smooth scroll
-    document.querySelectorAll('nav a, .mobile-nav a').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(e.target.getAttribute('href'));
-        if (target) {
-          window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
-        }
-        document.getElementById("mobileNav").style.display = "none"; // close menu after click
-        document.querySelector(".menu-toggle i").classList.replace("fa-times", "fa-bars");
-      });
-    });
+  <!-- Floating WhatsApp Chat Button -->
+  <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Ankush%2C%20I%20want%20to%20discuss%20a%20website%20project"
+     target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="whatsapp-float-text">चैट करें</span>
+  </a>
 
-    // Mobile menu toggle
-    const toggle = document.querySelector(".menu-toggle");
-    const mobileNav = document.getElementById("mobileNav");
-    toggle.addEventListener("click", () => {
-      if (mobileNav.style.display === "flex") {
-        mobileNav.style.display = "none";
-        toggle.innerHTML = '<i class="fas fa-bars"></i>';
-      } else {
-        mobileNav.style.display = "flex";
-        toggle.innerHTML = '<i class="fas fa-times"></i>';
-      }
-    });
-  </script>
 </body>
 </html>
-
-
-
-
-
-
-
